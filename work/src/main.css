@@ -1,0 +1,25 @@
+:root{
+    --system-them--:"black";
+    --system-them-color--:"white"
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul,li {
+    list-style: none;
+}
+.them {
+    background: var(--system-them--);
+    color:var(--system-them-color--);
+    transition: background-color 0.3s;
+}
+.them-color{
+    color:var(--system-them-color--);
+    transition: background-color,color 0.3s;
+}
+.them-bg{
+    background: var(--system-them--);
+    transition: background-color,color 0.3s;
+}
