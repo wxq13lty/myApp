@@ -3,7 +3,7 @@ import {nextTick, onMounted, reactive, ref} from "vue";
 import type {LoginInterface} from "@/types/login.ts";
 import {useCounterStore} from "@/stores";
 import {useRouter} from "vue-router";
-
+import request from "@/utils/axios.ts"
 const router = useRouter()
 const store = useCounterStore()
 const form = reactive<LoginInterface>(store.getForm() ? store.getForm() : {
@@ -14,8 +14,16 @@ const submitRef = ref<HTMLFormElement|null>(null)
 onMounted(()=>{
 	nextTick(()=>{
 		submitRef.value!.addEventListener('submit',()=>{
-			store.setForm(form)
-			router.push('/')
+			request.post('/login', form).then(res=>{
+				if(res.data.code===200){
+					store.setForm(form)
+					// alert('登录成功')
+					// router.push('/')
+				}else{
+					alert(res.data.msg)
+				}
+			})
+			// router.push('/')
 		})
 	})
 })

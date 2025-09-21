@@ -16,6 +16,7 @@
   "dependencies": {
     "@wangeditor/editor": "5.1.23",
     "@wangeditor/editor-for-vue": "^5.1.12",
+    "axios": "^1.12.2",
     "pinia": "^3.0.3",
     "vue": "^3.5.18",
     "vue-router": "^4.5.1"

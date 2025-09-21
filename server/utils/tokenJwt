@@ -1,0 +1,31 @@
+const jwt = require('jsonwebtoken');
+const { expressjwt: expressJwt } = require('express-jwt');
+const message = require('./message');
+const SECRET_KEY = 'admin_wxq_work';
+//生成token
+const createToken = (payload) => {
+    return jwt.sign(payload, SECRET_KEY, { expiresIn: '24h' }); // 24小时过期
+}
+//验证token
+const verifyToken = (token) => {
+    try {
+        const decoded = jwt.verify(token, SECRET_KEY);
+        return decoded; // 返回解码后的信息
+    }
+    catch (err) {
+        return message.createMessage(false, '无效的Token', null, 401); // token无效或过期
+    }
+}
+//中间件，验证token
+const jwtMiddleware = expressJwt({
+    secret: SECRET_KEY,
+    algorithms: ['HS256']
+}).unless({
+    path: ['/login','/register'] // 登录和注册接口不需要验证Token
+});
+
+module.exports = {
+    createToken,
+    verifyToken,
+    jwtMiddleware
+};

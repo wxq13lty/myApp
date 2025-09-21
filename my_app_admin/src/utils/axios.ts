@@ -2,10 +2,11 @@ import axios from "axios";
 const baseURL:string = import.meta.env.VITE_API_BASE_URL
 console.log(baseURL)
 const request = axios.create({
-    baseURL:"",
+    baseURL:baseURL,
     timeout:10000,
 })
 axios.interceptors.request.use(config =>{
+   config.headers['Content-Type'] = 'application/json';
     return config;
 }, error =>{
     return Promise.reject(error)
