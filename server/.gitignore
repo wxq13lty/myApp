@@ -10,6 +10,7 @@ lerna-debug.log*
 /my_app_admin/node_modules
 /server/node_modules
 /work/node_modules
+node_modules
 .DS_Store
 dist
 dist-ssr
