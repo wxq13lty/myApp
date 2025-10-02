@@ -76,6 +76,7 @@ class Model {
 	}
 
 	async update() {
+		console.log('this._data:',this._data);
 		if (!this._data) throw new Error('No data to update');
 		if (!this._where) throw new Error('Update must have where condition');
 		const sql = `UPDATE \`${this.table}\` SET ? ${this._where}`;
@@ -87,7 +88,11 @@ class Model {
 		const sql = `DELETE FROM \`${this.table}\` ${this._where}`;
 		return this.query(sql);
 	}
-
+	async count() {
+		const sql = `SELECT COUNT(*) as total FROM \`${this.table}\` ${this._where}`.replace(/\s+/g, ' ').trim();
+		const rows = await this.query(sql);
+		return rows[0]?.total || 0;
+	}
 	query(sql, params) {
 		return new Promise((resolve, reject) => {
 			pool.query(sql, params, (err, results) => {

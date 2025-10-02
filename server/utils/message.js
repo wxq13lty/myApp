@@ -4,7 +4,7 @@
  * data: '数据'
  * @returns {Object}
  * */
-function createMessage(success, message, data = null,code) {
+function createMessage(success, message, data = null,code = 200) {
     return {
         success,
         message,

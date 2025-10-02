@@ -4,7 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const message = require('./utils/message');
-const { jwtMiddleware } = require('./utils/tokenJwt');
+const { jwtMiddleware,parseToken } = require('./utils/tokenJwt');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -28,7 +28,6 @@ app.use((req, res, next) => {
     return next(); // 跳过 token 验证
   }
   const token = req.headers['authorization'];
-  console.log(req.headers);
   if (!token) {
     return res.status(401).json(message.createMessage(false, '未提供Token', null, 401));
   }

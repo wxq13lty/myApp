@@ -21,4 +21,10 @@ router.post('/updateUser', async (req, res) => {
     const result = await updateUser(req.body);
     return res.json(result);
 });
+router.get('/getRecord', async (req, res) => {
+    const {id} = req.auth;
+    const operateModel = require('../dataBase/operate');
+    const result = await operateModel.getRecord(id);
+    return res.json(result);
+});
 module.exports = router;

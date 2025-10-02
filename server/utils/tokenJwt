@@ -23,9 +23,20 @@ const jwtMiddleware = expressJwt({
 }).unless({
     path: ['/login','/register'] // 登录和注册接口不需要验证Token
 });
+// 解析token
+const parseToken = (req) => {
+    const authHeader = req.headers['authorization'];
+    if (authHeader) {
+        const token = authHeader.split(' ')[1]; // Bearer <token>
+        return verifyToken(token);
+    } else {
+        return message.createMessage(false, '未提供Token', null, 401);
+    }
+}
 
 module.exports = {
     createToken,
     verifyToken,
-    jwtMiddleware
+    jwtMiddleware,
+    parseToken
 };
