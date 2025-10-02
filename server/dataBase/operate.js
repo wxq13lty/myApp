@@ -1,4 +1,4 @@
-const {Model} = require('../dataBase/DBModel');
+const Model = require('../dataBase/DBModel');
 const {initTime} = require("../utils/common");
 const {createMessage} = require("../utils/message");
 

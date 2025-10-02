@@ -1,6 +1,6 @@
-const { Model } = require('../dataBase/DBModel');
-const {Token} = require("../dataBase/token");
-const {Operate} = require("../dataBase/operate");
+const  Model  = require('../dataBase/DBModel');
+const Token = require("../dataBase/token");
+const Operate = require("../dataBase/operate");
 const crypto = require('crypto');
 const {createMessage} = require("../utils/message");
 const {initTime, checkPhone} = require("../utils/common");
@@ -22,11 +22,11 @@ class User extends  Model{
             // 加密密码
             password = crypto.createHash('sha256').update(password).digest('hex');
             // 查询用户
-            const user = await this.where({username, password}).find();
+            const user = await this.where({username}).find();
             if (!user){
                 return createMessage(false, '用户不存在', [], 400);
             }
-            if (!user.username || !user.password){
+            if (!user.username || user.password !== password){
                 return createMessage(false, '用户名或密码错误', [], 400);
             }
             delete user.password;
@@ -37,10 +37,10 @@ class User extends  Model{
                 user.updatetime = initTime(user.updatetime);
             }
             // 添加 token
-            const token = await token.getToken(user.id);
+            const tokens = await token.getToken(user.id);
             await operate.log(user.id, '/login','登录')
             return createMessage(true, '登录成功', {
-                token: token.token,
+                token: tokens.token,
                 user: user
             })
         }catch (e){

@@ -4,8 +4,10 @@ import type {LoginInterface} from "@/types/login.ts";
 import {useCounterStore} from "@/stores";
 import {useRouter} from "vue-router";
 import request from "@/utils/axios.ts"
+import dialog from "@/utils/dialog";
 const router = useRouter()
 const store = useCounterStore()
+
 const form = reactive<LoginInterface>(store.getForm() ? store.getForm() : {
 	username:"",
 	password:""
@@ -20,7 +22,7 @@ onMounted(()=>{
 					// alert('登录成功')
 					// router.push('/')
 				}else{
-					alert(res.data.msg)
+					dialog(res.data.message).show()
 				}
 			})
 			// router.push('/')

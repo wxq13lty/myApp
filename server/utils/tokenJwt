@@ -3,8 +3,18 @@ const { expressjwt: expressJwt } = require('express-jwt');
 const message = require('./message');
 const SECRET_KEY = 'admin_wxq_work';
 //生成token
-const createToken = (payload) => {
-    return jwt.sign(payload, SECRET_KEY, { expiresIn: '24h' }); // 24小时过期
+// 修正后的 createToken 函数
+function createToken(userId) {
+    // 载荷应该是对象格式，而不是字符串
+    const payload = {
+        userId: userId,
+        // 其他需要的信息
+    };
+
+    // 修正变量名，使用已定义的 SECRET_KEY
+    return jwt.sign(payload, SECRET_KEY, {
+        expiresIn: '72h' // 或者使用秒数：72 * 60 * 60
+    });
 }
 //验证token
 const verifyToken = (token) => {

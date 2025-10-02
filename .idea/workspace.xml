@@ -4,12 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="05ba8d75-c23f-4dbc-bd2c-34edf8076514" name="更改" comment="refactor(server):重构服务器代码结构和逻辑&#10;&#10;- 删除冗余的 API 路由文件，整合用户相关接口&#10;-重命名数据库配置文件和模型工具类文件&#10;- 优化消息响应函数，增强数据处理能力- 移除未使用的用户操作记录模块&#10;- 改进应用中间件注释并调整顺序提升可读性&#10;- 禁用部分 IDE 不必要的代码检查规则">
-      <change afterPath="$PROJECT_DIR$/server/dataBase/token.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dataBase/user.js" afterDir="false" />
+    <list default="true" id="05ba8d75-c23f-4dbc-bd2c-34edf8076514" name="更改" comment="refactor(server):重构服务器代码结构和逻辑&#10;&#10;- 添加手机号验证函数 checkPhone&#10;- 新增操作日志记录类 Operate- 新增 Token 管理类 Token- 新增用户登录和手机号登录功能- 整合用户相关数据库操作到 User 类-优化时间格式化和消息响应工具函数">
+      <change afterPath="$PROJECT_DIR$/my_app_admin/src/utils/dialog.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_app_admin/.env" beforeDir="false" afterPath="$PROJECT_DIR$/my_app_admin/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_app_admin/src/LoginView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/my_app_admin/src/LoginView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dataBase/operate.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataBase/operate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/utils/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/utils/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dataBase/token.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataBase/token.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dataBase/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataBase/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/utils/tokenJwt" beforeDir="false" afterPath="$PROJECT_DIR$/server/utils/tokenJwt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +30,8 @@
         <option value="HTML File" />
         <option value="CSS File" />
         <option value="Vue Composition API Component" />
-        <option value="TypeScript File" />
         <option value="JavaScript File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -45,42 +49,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "javascript.nodejs.core.library.configured.version": "16.19.0",
-    "javascript.nodejs.core.library.typings.version": "16.18.126",
-    "js.debugger.nextJs.config.created.client": "true",
-    "js.debugger.nextJs.config.created.server": "true",
-    "last_opened_file_path": "C:/Users/Lenovo/myApp/server",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.Next.js: 服务器端.executor": "Run",
-    "npm.dev.executor": "Run",
-    "npm.start.executor": "Run",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Users\\Lenovo\\myApp\\my_app_admin\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.19.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.126&quot;,
+    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
+    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lenovo/myApp/server&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.Next.js: 服务器端.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Lenovo\\myApp\\my_app_admin\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql_aurora"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql_aurora&quot;
     ],
-    "vue.recent.templates": [
-      "Vue Composition API Component"
+    &quot;vue.recent.templates&quot;: [
+      &quot;Vue Composition API Component&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Lenovo\myApp\server" />
@@ -196,7 +200,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759375579936</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="refactor(server):重构服务器代码结构和逻辑&#10;&#10;- 添加手机号验证函数 checkPhone&#10;- 新增操作日志记录类 Operate- 新增 Token 管理类 Token- 新增用户登录和手机号登录功能- 整合用户相关数据库操作到 User 类-优化时间格式化和消息响应工具函数">
+      <option name="closed" value="true" />
+      <created>1759381339892</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1759381339892</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,6 +229,7 @@
     <MESSAGE value="内容" />
     <MESSAGE value="后台、服务器" />
     <MESSAGE value="refactor(server):重构服务器代码结构和逻辑&#10;&#10;- 删除冗余的 API 路由文件，整合用户相关接口&#10;-重命名数据库配置文件和模型工具类文件&#10;- 优化消息响应函数，增强数据处理能力- 移除未使用的用户操作记录模块&#10;- 改进应用中间件注释并调整顺序提升可读性&#10;- 禁用部分 IDE 不必要的代码检查规则" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor(server):重构服务器代码结构和逻辑&#10;&#10;- 删除冗余的 API 路由文件，整合用户相关接口&#10;-重命名数据库配置文件和模型工具类文件&#10;- 优化消息响应函数，增强数据处理能力- 移除未使用的用户操作记录模块&#10;- 改进应用中间件注释并调整顺序提升可读性&#10;- 禁用部分 IDE 不必要的代码检查规则" />
+    <MESSAGE value="refactor(server):重构服务器代码结构和逻辑&#10;&#10;- 添加手机号验证函数 checkPhone&#10;- 新增操作日志记录类 Operate- 新增 Token 管理类 Token- 新增用户登录和手机号登录功能- 整合用户相关数据库操作到 User 类-优化时间格式化和消息响应工具函数" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor(server):重构服务器代码结构和逻辑&#10;&#10;- 添加手机号验证函数 checkPhone&#10;- 新增操作日志记录类 Operate- 新增 Token 管理类 Token- 新增用户登录和手机号登录功能- 整合用户相关数据库操作到 User 类-优化时间格式化和消息响应工具函数" />
   </component>
 </project>

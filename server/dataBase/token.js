@@ -1,4 +1,4 @@
-const {Model} = require('../dataBase/DBModel');
+const Model = require('../dataBase/DBModel');
 const {createToken} = require('../utils/tokenJwt');
 
 class Token extends Model {
@@ -12,21 +12,36 @@ class Token extends Model {
      * @return {Object}
      * */
     async insertToken(userId) {
-        const now = this.getCurrentTime(); //
-        return this.insert({
-            userId,
-            token: createToken(userId),
+        const now = Date.now();
+        console.log('Creating token for userId:', userId, typeof userId);
+
+        // 确保生成 token 不会抛出异常
+        let tokenValue;
+        try {
+            tokenValue = createToken(userId);
+        } catch (tokenError) {
+            console.error('Token creation error:', tokenError);
+            throw tokenError;
+        }
+
+        // 确保传递给 insert 的数据格式正确
+        const dataToInsert = {
+            userId: userId,
+            token: tokenValue,
             date: now,
             entime: now + 72 * 60 * 60 * 1000
-        });
+        };
+
+        console.log('Data to insert:', dataToInsert);
+        return this.insert(dataToInsert);
     }
 
     async getToken(userId) {
-        const now = this.getCurrentTime();
+        const now = Date.now(); //
         try {
             const condition = {
                 userId,
-                entime: {$gt: now - 72 * 60 * 60 * 1000}
+                entime: [`> ${now - 72 * 60 * 60 * 1000}`]
             };
 
             const rows = await this.where(condition).select();
