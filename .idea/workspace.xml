@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="05ba8d75-c23f-4dbc-bd2c-34edf8076514" name="更改" comment="后台、服务器">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="05ba8d75-c23f-4dbc-bd2c-34edf8076514" name="更改" comment="refactor(server):重构服务器代码结构和逻辑&#10;&#10;- 删除冗余的 API 路由文件，整合用户相关接口&#10;-重命名数据库配置文件和模型工具类文件&#10;- 优化消息响应函数，增强数据处理能力- 移除未使用的用户操作记录模块&#10;- 改进应用中间件注释并调整顺序提升可读性&#10;- 禁用部分 IDE 不必要的代码检查规则">
+      <change afterPath="$PROJECT_DIR$/server/dataBase/token.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/dataBase/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dataBase/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataBase/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dataBase/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataBaseConfig.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dataBase/operate.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataBase/operate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dataBase/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataBase/DBModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/users.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/utils/initTIme.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/utils/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/utils/message.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/utils/message.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/utils/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/utils/common.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +188,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758347167781</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="refactor(server):重构服务器代码结构和逻辑&#10;&#10;- 删除冗余的 API 路由文件，整合用户相关接口&#10;-重命名数据库配置文件和模型工具类文件&#10;- 优化消息响应函数，增强数据处理能力- 移除未使用的用户操作记录模块&#10;- 改进应用中间件注释并调整顺序提升可读性&#10;- 禁用部分 IDE 不必要的代码检查规则">
+      <option name="closed" value="true" />
+      <created>1759375579936</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1759375579936</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,6 +216,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="内容" />
     <MESSAGE value="后台、服务器" />
-    <option name="LAST_COMMIT_MESSAGE" value="后台、服务器" />
+    <MESSAGE value="refactor(server):重构服务器代码结构和逻辑&#10;&#10;- 删除冗余的 API 路由文件，整合用户相关接口&#10;-重命名数据库配置文件和模型工具类文件&#10;- 优化消息响应函数，增强数据处理能力- 移除未使用的用户操作记录模块&#10;- 改进应用中间件注释并调整顺序提升可读性&#10;- 禁用部分 IDE 不必要的代码检查规则" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor(server):重构服务器代码结构和逻辑&#10;&#10;- 删除冗余的 API 路由文件，整合用户相关接口&#10;-重命名数据库配置文件和模型工具类文件&#10;- 优化消息响应函数，增强数据处理能力- 移除未使用的用户操作记录模块&#10;- 改进应用中间件注释并调整顺序提升可读性&#10;- 禁用部分 IDE 不必要的代码检查规则" />
   </component>
 </project>

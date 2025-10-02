@@ -9,4 +9,14 @@ const initTime = (time) => {
     const s = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
     return Y + M + D + h + m + s;
 }
-module.exports = initTime;
+/**
+ *验证手机号
+ * @param {String} phone
+ * */
+const checkPhone = (phone) => {
+    return /^1[3456789]\d{9}$/.test(phone);
+}
+module.exports = {
+    initTime,
+    checkPhone
+};
