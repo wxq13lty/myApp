@@ -3,7 +3,7 @@
  * 用法：const model = new Model('user'); await model.where({id:1}).select();
  */
 const mysql = require('mysql');
-const { db } = require('./config');
+const  db  = require('../dataBaseConfig');
 
 const pool = mysql.createPool(db);
 
@@ -26,7 +26,7 @@ class Model {
 		for (const key in whereObj) {
 			arr.push(`\`${key}\`=${mysql.escape(whereObj[key])}`);
 		}
-		this._where = 'WHERE ' + arr.join(' AND ');
+		this._where = `WHERE ${arr.join(' AND ')}`;
 		return this;
 	}
 
@@ -91,7 +91,7 @@ class Model {
 	async count() {
 		const sql = `SELECT COUNT(*) as total FROM \`${this.table}\` ${this._where}`.replace(/\s+/g, ' ').trim();
 		const rows = await this.query(sql);
-		return rows[0]?.total || 0;
+		return Number(rows[0]?.total) || 0;
 	}
 	query(sql, params) {
 		return new Promise((resolve, reject) => {
